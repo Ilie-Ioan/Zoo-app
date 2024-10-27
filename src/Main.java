@@ -2,6 +2,67 @@ import java.util.Scanner;
 import java.io.*;
 
 public class Main {
+    public static void writeObjectsToFile(Tiger tigerObject, Penguin penguinObject, Dolphin dolphinObject)
+    {
+        try(FileOutputStream fileOut = new FileOutputStream("tiger.txt");ObjectOutputStream objectOut = new ObjectOutputStream(fileOut))
+        {
+            objectOut.writeObject(tigerObject);
+            System.out.println("Tiger object saved to tiger.txt");
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        try(FileOutputStream fileOut = new FileOutputStream("dolphin.txt");ObjectOutputStream objectOut = new ObjectOutputStream(fileOut))
+        {
+            objectOut.writeObject(dolphinObject);
+            System.out.println("Dolphin object saved to dolphin.txt");
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        try(FileOutputStream fileOut = new FileOutputStream("penguin.txt");ObjectOutputStream objectOut = new ObjectOutputStream(fileOut))
+        {
+            objectOut.writeObject(penguinObject);
+            System.out.println("Penguin object saved to penguin.txt");
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+    public static void readObjectsFromFile()
+    {
+        try(FileInputStream fileIn = new FileInputStream("tiger.txt");ObjectInputStream objectIn = new ObjectInputStream(fileIn))
+        {
+            Tiger tigerObject = (Tiger) objectIn.readObject();
+        }
+        catch (IOException  | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+
+        try(FileInputStream fileIn = new FileInputStream("dolphin.txt");ObjectInputStream objectIn = new ObjectInputStream(fileIn))
+        {
+            Dolphin dolphinObject = (Dolphin) objectIn.readObject();
+        }
+        catch (IOException  | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+
+        try(FileInputStream fileIn = new FileInputStream("penguin.txt");ObjectInputStream objectIn = new ObjectInputStream(fileIn))
+        {
+            Penguin PenguinObject = (Penguin) objectIn.readObject();
+        }
+        catch (IOException  | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         // for getting input
         Scanner keyboard = new Scanner(System.in);
@@ -134,6 +195,24 @@ public class Main {
                         continueInnerLoop = keyboard.nextInt();
                     } while (continueInnerLoop == 1);
                     break;
+                /**
+                 * TODO 5: Introduce case 4 to call the writeObjectsToFile method to save the
+                 * object state of the animal into the file
+                 */
+                case 4:
+                    //   writeObjectsToFile(new Tiger(),new Penguin() ,new Dolphin());
+                    writeObjectsToFile(tigerObject, penguinObject, dolphinObject);
+                    System.out.println("You saved the properties succesfully");
+                    break;
+
+                /**
+                 * TODO 6: Introduce case 5 to call the readObjectsFromFile method to
+                 * fetch the object state of the animal from the file to display on screen
+                 */
+                case 5:
+                    readObjectsFromFile();
+                    System.out.println("This are your informations saved");
+                    break;
 
                 default:
                     System.out.println("Sorry no such animal available.");
@@ -172,6 +251,7 @@ public class Main {
         return choiceGivenByUser;
 
     }
+
 
 }
 

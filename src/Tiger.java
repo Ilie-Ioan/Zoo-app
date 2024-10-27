@@ -1,7 +1,9 @@
 import java.io.Serializable;
 
-
-public class Tiger extends Animal implements Walk {
+/**
+ * TODO 1.a: Implement serializable interface for class Tiger
+ */
+public class Tiger extends Animal implements Walk,Serializable {
 
     // property for stripes on tiger
     int numberOfStripes;
@@ -50,5 +52,15 @@ public class Tiger extends Animal implements Walk {
     public void walking() {
         System.out.println("Tiger: I am moving at the speed " + speed);
     }
+
+    @Override
+    public String toString() {
+        return "Tiger{" +
+                "numberOfStripes=" + numberOfStripes +
+                ", speed=" + speed +
+                ", soundLevel=" + soundLevel +
+                '}';
+    }
+
 
 }

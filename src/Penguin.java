@@ -1,6 +1,9 @@
 import java.io.Serializable;
 
-public class Penguin extends Animal implements Walk, Swim {
+/**
+ * TODO 1.b: Implement serializable interface for class Penguin
+ */
+public class Penguin extends Animal implements Walk, Swim,Serializable {
 
     boolean isSwimming;
     int walkSpeed;
@@ -54,4 +57,12 @@ public class Penguin extends Animal implements Walk, Swim {
         System.out.println("Penguin: I am walking at the speed " + walkSpeed + " mph");
     }
 
+    @Override
+    public String toString() {
+        return "Penguin{" +
+                "isSwimming=" + isSwimming +
+                ", walkSpeed=" + walkSpeed +
+                ", swimSpeed=" + swimSpeed +
+                '}';
+    }
 }
